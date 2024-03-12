@@ -3,10 +3,6 @@ import os
 import numpy as np
 import pickle as pkl
 from sys import path
-program_dir = "/home/elliott/Develop/margin_exps/kit/starting_kit/ingestion_program"
-path.append(program_dir)
-
-from data_manager import DataManager 
 
 import torch
 
@@ -62,10 +58,8 @@ def get_margin_distribution(model,X,y,margin_length=4):
     values, indices = torch.topk(output,k=2)
 
     pred_y_p = indices[:,0]
-    # Convert y to pytorch
-    #yp = torch.tensor(np.asarray(y))
-    yp = y
 
+    yp = y
 
     true_match_float = (indices[:,0].int() == yp).float()
 
